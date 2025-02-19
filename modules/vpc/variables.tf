@@ -8,13 +8,13 @@ variable "vpc_name" {
   type        = string
 }
 
-variable "subnet_cidr_block" {
-  description = "The CIDR block for the subnet"
-  type        = string
+variable "subnet_cidr_blocks" {
+  description = "The CIDR blocks for the subnet"
+  type        = list(string)
 }
 
-variable "az" {
-  description = "The availability zone for the subnet"
-  type        = string
-  default = "us-east-1a"
+variable "azs" {
+  description = "List of desired availability zones for the subnet"
+  type        = list(string)
+  default     = ["us-east-1a", "us-east-1b"]
 }

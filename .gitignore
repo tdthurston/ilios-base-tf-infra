@@ -1,0 +1,30 @@
+# Ignore Terraform state files
+terraform.tfstate
+terraform.tfstate.backup
+
+# Ignore .terraform directory
+.terraform/
+**/.terraform/*
+
+# Ignore provider file
+providers.tf
+
+# Ignore Terraform crash logs
+crash.log
+
+# Ignore Terraform variable files
+*.tfvars
+
+# Ignore override files as they are usually used to override resources locally
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+
+# Ignore .terraform directory
+.terraform/
+
+# Ignore any plan output files
+*.tfplan
+
+modules/vpc/.terraform/providers/registry.terraform.io/hashicorp/aws/5.87.0/linux_amd64/terraform-provider-aws_v5.87.0_x5
