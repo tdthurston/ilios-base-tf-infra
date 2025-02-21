@@ -19,16 +19,6 @@ variable "azs" {
   type        = list(string)
 }
 
-
-
-/*
-terraform apply \
-  -var="vpc_cidr_block=10.0.0.0/16" \
-  -var="vpc_name=ilios-vpc" \
-  -var='subnet_cidr_blocks=["10.0.1.0/24", "10.0.2.0/24", "10.0.3.0/24", "10.0.4.0/24"]' \
-  -var='azs=["us-east-1a", "us-east-1b"]'
-*/
-
 # Define EKS variables
 
 variable "cluster_name" {
@@ -74,4 +64,38 @@ variable "max_size" {
 variable "max_unavailable" {
   description = "The maximum number of unavailable nodes during a rolling update"
   type        = number
+}
+
+# Load balancer variables
+
+variable "lb_name" {
+  description = "The name of the load balancer"
+  type        = string
+}
+
+variable "target_group_name" {
+  description = "The name of the target group"
+  type        = string
+}
+
+variable "vpc_id" {
+  description = "The ID of the VPC"
+  type        = string
+}
+
+variable "subnet_ids" {
+  description = "List of subnet IDs"
+  type        = list(string)
+}
+
+variable "lb_arn" {
+  description = "The ARN of the load balancer"
+}
+
+variable "target_group_arn" {
+  description = "The ARN of the target group"
+}
+
+variable "listener_arn" {
+  description = "The ARN of the listener"
 }
