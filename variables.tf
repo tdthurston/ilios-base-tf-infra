@@ -66,7 +66,7 @@ variable "max_unavailable" {
   type        = number
 }
 
-# Load balancer variables
+# Define load balancer variables
 
 variable "lb_name" {
   description = "The name of the load balancer"

@@ -16,5 +16,4 @@ variable "subnet_cidr_blocks" {
 variable "azs" {
   description = "List of desired availability zones for the subnet"
   type        = list(string)
-  default     = ["us-east-1a", "us-east-1b"]
 }

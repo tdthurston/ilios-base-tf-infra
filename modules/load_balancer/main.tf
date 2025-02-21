@@ -59,7 +59,7 @@ resource "aws_security_group" "lb_sg" {
     from_port   = 80
     to_port     = 80
     protocol    = "TCP"
-    cidr_blocks = "${module.vpc.vpc_cidr_block}" 
+    cidr_blocks = module.vpc.vpc_cidr_block
   }
 }
 
@@ -69,7 +69,7 @@ resource "aws_security_group_rule" "lb_sg_rule" {
   to_port           = 80
   protocol          = "TCP"
   security_group_id = aws_security_group.lb_sg.id
-  cidr_blocks       = "${module.vpc.vpc_cidr_block}"
+  cidr_blocks       = module.vpc.vpc_cidr_block
 }
 
 resource "aws_security_group_rule" "lb_sg_rule_egress" {
@@ -78,5 +78,5 @@ resource "aws_security_group_rule" "lb_sg_rule_egress" {
   to_port           = 0
   protocol          = "-1"
   security_group_id = aws_security_group.lb_sg.id
-  cidr_blocks       = "${module.vpc.vpc_cidr_block}"
+  cidr_blocks       = module.vpc.vpc_cidr_block
 }
