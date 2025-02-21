@@ -22,8 +22,6 @@ Below are the variables you need to define in your `variables.tf` file:
 
 - `cluster_name`: The name of the EKS cluster.
 - `node_group_name`: The name of the EKS node group.
-- `cluster_security_group_id`: The ID of the security group associated with the EKS cluster.
-- `node_group_security_group_id`: The ID of the security group associated with the EKS node group.
 - `instance_type`: The instance type to use for the EKS node group (e.g., "t2.medium").
 - `desired_capacity`: The desired capacity of the EKS node group.
 - `min_size`: The minimum size of the EKS node group.

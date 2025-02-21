@@ -31,16 +31,6 @@ variable "node_group_name" {
   type        = string
 }
 
-variable "cluster_security_group_id" {
-  description = "The ID of the security group associated with the EKS cluster"
-  type        = string
-}
-
-variable "node_group_security_group_id" {
-  description = "The ID of the security group associated with the EKS node group"
-  type        = string
-}
-
 variable "instance_type" {
   description = "The instance type to use for the EKS node group"
   type        = string
