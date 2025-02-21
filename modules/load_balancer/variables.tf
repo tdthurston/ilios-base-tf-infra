@@ -3,21 +3,9 @@ variable "lb_name" {
   type        = string
 }
 
-variable "lb_arn" {
-  description = "The ARN of the load balancer"
-}
-
 variable "target_group_name" {
   description = "The name of the target group"
   type        = string
-}
-
-variable "target_group_arn" {
-  description = "The ARN of the target group"
-}
-
-variable "listener_arn" {
-  description = "The ARN of the listener"
 }
 
 variable "vpc_id" {

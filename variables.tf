@@ -1,3 +1,10 @@
+# Specify AWS region you would like to create resources in
+
+variable "vpc_region" {
+  description = "The AWS region to create resources in"
+  type        = string
+}
+
 # Define VPC and subnet variables
 
 variable "vpc_cidr_block" {
@@ -66,26 +73,4 @@ variable "lb_name" {
 variable "target_group_name" {
   description = "The name of the target group"
   type        = string
-}
-
-variable "vpc_id" {
-  description = "The ID of the VPC"
-  type        = string
-}
-
-variable "subnet_ids" {
-  description = "List of subnet IDs"
-  type        = list(string)
-}
-
-variable "lb_arn" {
-  description = "The ARN of the load balancer"
-}
-
-variable "target_group_arn" {
-  description = "The ARN of the target group"
-}
-
-variable "listener_arn" {
-  description = "The ARN of the listener"
 }

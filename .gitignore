@@ -13,7 +13,7 @@ providers.tf
 crash.log
 
 # Ignore Terraform variable files
-*.tfvars
+# *.tfvars //disabled to allow for test deployment. For production, uncomment this line to avoid exposing sensitive information
 
 # Ignore override files as they are usually used to override resources locally
 override.tf

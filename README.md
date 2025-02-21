@@ -11,6 +11,10 @@ This guide will walk you through the steps to deploy the infrastructure. Please 
 
 Below are the variables you need to define in your `variables.tf` file:
 
+### AWS Region Variable
+
+- `aws_region`: The AWS region where you want to deploy your infrastructure (e.g., "us-west-2").
+
 ### VPC and Subnet Variables
 
 - `vpc_cidr_block`: The CIDR block for the VPC (e.g., "10.0.0.0/16").
@@ -32,11 +36,6 @@ Below are the variables you need to define in your `variables.tf` file:
 
 - `lb_name`: The name of the load balancer.
 - `target_group_name`: The name of the target group.
-- `vpc_id`: The ID of the VPC.
-- `subnet_ids`: List of subnet IDs (e.g., ["subnet-abc123", "subnet-def456"]).
-- `lb_arn`: The ARN of the load balancer.
-- `target_group_arn`: The ARN of the target group.
-- `listener_arn`: The ARN of the listener.
 
 ## Deployment Steps
 
@@ -54,8 +53,6 @@ Below are the variables you need to define in your `variables.tf` file:
     azs = ["us-west-2a", "us-west-2b"]
     cluster_name = "my-cluster"
     node_group_name = "my-node-group"
-    cluster_security_group_id = "sg-0123456789abcdef"
-    node_group_security_group_id = "sg-abcdef0123456789"
     instance_type = "t2.medium"
     desired_capacity = 2
     min_size = 1
@@ -63,11 +60,6 @@ Below are the variables you need to define in your `variables.tf` file:
     max_unavailable = 1
     lb_name = "my-load-balancer"
     target_group_name = "my-target-group"
-    vpc_id = "vpc-0123456789abcdef"
-    subnet_ids = ["subnet-abc123", "subnet-def456"]
-    lb_arn = "arn:aws:elasticloadbalancing:region:account-id:loadbalancer/app/my-load-balancer/50dc6c495c0c9188"
-    target_group_arn = "arn:aws:elasticloadbalancing:region:account-id:targetgroup/my-target-group/6d0ecf831eec9f09"
-    listener_arn = "arn:aws:elasticloadbalancing:region:account-id:listener/app/my-load-balancer/50dc6c495c0c9188/6d0ecf831eec9f09"
     ```
 5. Apply the Terraform configuration:
     ```sh
@@ -80,4 +72,6 @@ Your infrastructure should now be deployed. If you encounter any issues, refer t
 ## Additional Information
 
 For more details on each variable and their usage, please refer to the `variables.tf` file and the official Terraform documentation.
+
+A .tfvars file for testing has been included in this repository.
 
