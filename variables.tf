@@ -22,7 +22,7 @@ variable "subnet_cidr_blocks" {
 }
 
 variable "azs" {
-  description = "List of desired availability zones"
+  description = "Enter a list of two desired availability zones within the selected region."
   type        = list(string)
 }
 
@@ -63,6 +63,16 @@ variable "max_unavailable" {
   type        = number
 }
 
+##  variable "vpc_id" {
+##  description = "The ID of the VPC in which to create the EKS cluster"
+##  type        = string
+##}
+
+##  variable "private_subnet_ids" {
+##  description = "The IDs of the private subnets in which to create the EKS cluster"
+##  type        = list(string)
+##}
+
 # Define load balancer variables
 
 variable "lb_name" {
@@ -74,3 +84,8 @@ variable "target_group_name" {
   description = "The name of the target group"
   type        = string
 }
+
+##  variable "public_subnet_ids" {
+##  description = "The IDs of the public subnets in which to create the EKS cluster"
+##  type        = list(string)
+##  }

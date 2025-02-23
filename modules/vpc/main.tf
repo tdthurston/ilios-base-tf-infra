@@ -6,11 +6,11 @@ resource "aws_vpc" "ilios_vpc" {
   }
 }
 
-resource "aws_subnet" "ilios-public" {
-  count = length(var.azs)
+resource "aws_subnet" "ilios_public" {
+  count = 2
 
   vpc_id                  = aws_vpc.ilios_vpc.id
-  cidr_block              = var.subnet_cidr_blocks[count.index]
+  cidr_block              = element(var.subnet_cidr_blocks, count.index)
   availability_zone       = var.azs[count.index]
   map_public_ip_on_launch = true
 
@@ -19,11 +19,11 @@ resource "aws_subnet" "ilios-public" {
   }
 }
 
-resource "aws_subnet" "ilios-private" {
-  count = length(var.azs)
+resource "aws_subnet" "ilios_private" {
+  count = 2
 
   vpc_id                  = aws_vpc.ilios_vpc.id
-  cidr_block              = var.subnet_cidr_blocks[count.index + 2]
+  cidr_block              = element(var.subnet_cidr_blocks, count.index + 2)
   availability_zone       = var.azs[count.index]
   map_public_ip_on_launch = false
 
@@ -46,7 +46,7 @@ resource "aws_eip" "ilios_eip" {
 
 resource "aws_nat_gateway" "ilios_nat_gw" {
   allocation_id = aws_eip.ilios_eip.id
-  subnet_id     = aws_subnet.ilios-public[0].id
+  subnet_id     = aws_subnet.ilios_public[0].id
 
   tags = {
     Name = "ilios-nat-gw"
@@ -72,7 +72,7 @@ resource "aws_route" "ilios_public_route" {
 
 resource "aws_route_table_association" "ilios_public_sa" {
   count          = length(var.azs)
-  subnet_id      = aws_subnet.ilios-public[count.index].id
+  subnet_id      = aws_subnet.ilios_public[count.index].id
   route_table_id = aws_route_table.ilios_public_rt.id
 }
 
@@ -95,7 +95,7 @@ resource "aws_route" "ilios_private_route" {
 
 resource "aws_route_table_association" "ilios_private_sa" {
   count          = length(var.azs)
-  subnet_id      = aws_subnet.ilios-private[count.index].id
+  subnet_id      = aws_subnet.ilios_private[count.index].id
   route_table_id = aws_route_table.ilios_private_rt.id
 
 }

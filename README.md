@@ -19,8 +19,8 @@ Below are the variables you need to define in your `variables.tf` file:
 
 - `vpc_cidr_block`: The CIDR block for the VPC (e.g., "10.0.0.0/16").
 - `vpc_name`: The name of the VPC.
-- `subnet_cidr_blocks`: List of CIDR blocks for the subnets (e.g., ["10.0.1.0/24", "10.0.2.0/24"]).
-- `azs`: List of desired availability zones (e.g., ["us-west-2a", "us-west-2b"]).
+- `subnet_cidr_blocks`: List of CIDR blocks for the subnets. Enter four. (e.g., ["10.0.1.0/24", "10.0.2.0/24", "10.0.3.0/24", "10.0.4.0/24"]).
+- `azs`: List of desired availability zones. Enter two availability zones within the selected region. (e.g., ["us-west-2a", "us-west-2b"]).
 
 ### EKS Variables
 
@@ -49,7 +49,7 @@ Below are the variables you need to define in your `variables.tf` file:
     ```hcl
     vpc_cidr_block = "10.0.0.0/16"
     vpc_name = "my-vpc"
-    subnet_cidr_blocks = ["10.0.1.0/24", "10.0.2.0/24"]
+    subnet_cidr_blocks = ["10.0.1.0/24", "10.0.2.0/24", "10.0.3.0/24", "10.0.4.0/24"]
     azs = ["us-west-2a", "us-west-2b"]
     cluster_name = "my-cluster"
     node_group_name = "my-node-group"
@@ -72,6 +72,4 @@ Your infrastructure should now be deployed. If you encounter any issues, refer t
 ## Additional Information
 
 For more details on each variable and their usage, please refer to the `variables.tf` file and the official Terraform documentation.
-
-A .tfvars file for testing has been included in this repository.
 

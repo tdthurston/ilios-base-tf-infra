@@ -1,23 +1,20 @@
 resource "aws_eks_cluster" "ilios_cluster" {
-  name     = var.cluster_name
-
-  access_config {
-    authentication_mode = "API"
-  }
+  name = var.cluster_name
 
   role_arn = aws_iam_role.cluster_role.arn
   version  = "1.31"
 
   vpc_config {
-    subnet_ids         = module.vpc.private_subnets
-    security_group_ids = [aws_security_group.eks_cluster_sg.id]
+    subnet_ids         = var.private_subnet_ids
+    security_group_ids = [aws_security_group.cluster_sg.id]
   }
 
   # Ensure that IAM Role permissions are created before and deleted
   # after EKS Cluster handling. Otherwise, EKS will not be able to
   # properly delete EKS managed EC2 infrastructure such as Security Groups.
   depends_on = [
-    aws_iam_role_policy_attachment.cluster_AmazonEKSClusterPolicy,
+    aws_iam_role.cluster_role,
+    aws_iam_role_policy_attachment.cluster_role_attachment
   ]
 }
 
@@ -48,15 +45,15 @@ resource "aws_iam_role_policy_attachment" "cluster_role_attachment" {
 resource "aws_eks_node_group" "ilios_node_group" {
   cluster_name    = aws_eks_cluster.ilios_cluster.name
   node_group_name = "ilios-node-group"
-  node_role_arn   = aws_iam_role.cluster_role.arn
-  subnet_ids      = module.vpc.private_subnets
+  node_role_arn   = aws_iam_role.node_group_role.arn
+  subnet_ids      = var.private_subnet_ids
   instance_types  = [var.instance_type]
   capacity_type   = "ON_DEMAND"
 
   scaling_config {
-    desired_size = 1
-    max_size     = 3
-    min_size     = 1
+    desired_size = var.desired_capacity
+    max_size     = var.max_size
+    min_size     = var.min_size
   }
 
   update_config {
@@ -64,9 +61,10 @@ resource "aws_eks_node_group" "ilios_node_group" {
   }
 
   depends_on = [
-    aws_iam_role_policy_attachment.example-AmazonEKSWorkerNodePolicy,
-    aws_iam_role_policy_attachment.example-AmazonEKS_CNI_Policy,
-    aws_iam_role_policy_attachment.example-AmazonEC2ContainerRegistryReadOnly,
+    aws_iam_role.node_group_role,
+    aws_iam_role_policy_attachment.worker_node_policy_attachment,
+    aws_iam_role_policy_attachment.eks_cni_policy_attachment,
+    aws_iam_role_policy_attachment.ec2_container_policy_attachment,
   ]
 }
 
@@ -85,17 +83,17 @@ resource "aws_iam_role" "node_group_role" {
   })
 }
 
-resource "aws_iam_role_policy_attachment" "example-AmazonEKSWorkerNodePolicy" {
+resource "aws_iam_role_policy_attachment" "worker_node_policy_attachment" {
   policy_arn = "arn:aws:iam::aws:policy/AmazonEKSWorkerNodePolicy"
   role       = aws_iam_role.node_group_role.name
 }
 
-resource "aws_iam_role_policy_attachment" "example-AmazonEKS_CNI_Policy" {
+resource "aws_iam_role_policy_attachment" "eks_cni_policy_attachment" {
   policy_arn = "arn:aws:iam::aws:policy/AmazonEKS_CNI_Policy"
   role       = aws_iam_role.node_group_role.name
 }
 
-resource "aws_iam_role_policy_attachment" "example-AmazonEC2ContainerRegistryReadOnly" {
+resource "aws_iam_role_policy_attachment" "ec2_container_policy_attachment" {
   policy_arn = "arn:aws:iam::aws:policy/AmazonEC2ContainerRegistryReadOnly"
   role       = aws_iam_role.node_group_role.name
 }
@@ -103,19 +101,19 @@ resource "aws_iam_role_policy_attachment" "example-AmazonEC2ContainerRegistryRea
 resource "aws_security_group" "cluster_sg" {
   name        = "eks-cluster-sg"
   description = "Security group for EKS cluster"
-  vpc_id      = module.vpc.vpc_id
+  vpc_id      = var.vpc_id
 }
 
 resource "aws_security_group" "node_group_sg" {
   name        = "eks-node-group-sg"
   description = "Security group for EKS node group"
-  vpc_id      = module.vpc.vpc_id
+  vpc_id      = var.vpc_id
 }
 
 resource "aws_security_group_rule" "eks_cluster_ingress" {
   type              = "ingress"
-  from_port         = 443
-  to_port           = 443
+  from_port         = 80
+  to_port           = 80
   protocol          = "tcp"
   cidr_blocks       = ["0.0.0.0/0"]
   security_group_id = aws_security_group.cluster_sg.id

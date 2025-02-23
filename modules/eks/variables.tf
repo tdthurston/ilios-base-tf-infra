@@ -42,3 +42,13 @@ variable "max_unavailable" {
   description = "The maximum number of nodes that can be unavailable during a rolling update"
   type        = number
 }
+
+variable "vpc_id" {
+  description = "The ID of the VPC in which to create the EKS cluster"
+  type        = string
+}
+
+variable "private_subnet_ids" {
+  description = "The IDs of the private subnets in which to create the EKS cluster"
+  type        = list(string)
+}

@@ -13,12 +13,17 @@ variable "vpc_id" {
   type        = string
 }
 
-variable "subnet_ids" {
-  description = "List of subnet IDs"
+variable "public_subnet_ids" {
+  description = "The IDs of the public subnets in which to create the EKS cluster"
   type        = list(string)
 }
 
 variable "vpc_cidr_block" {
   description = "The CIDR block of the VPC"
+  type        = string
+}
+
+variable "instance_type" {
+  description = "The instance type of the load balancer"
   type        = string
 }
