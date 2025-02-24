@@ -1,6 +1,6 @@
 module "ilios_lb" {
 
-  source = "./modules/load_balancer"
+  source = "git::https://github.com/tdthurston/ilios-base-tf-infra.git//modules/load_balancer"
 
   lb_name           = var.lb_name
   target_group_name = var.target_group_name

@@ -1,6 +1,6 @@
 module "ilios_eks_cluster" {
 
-  source = "./modules/eks"
+  source = "git::https://github.com/tdthurston/ilios-base-tf-infra.git//modules//eks"
 
   cluster_name                 = var.cluster_name
   node_group_name              = var.node_group_name
