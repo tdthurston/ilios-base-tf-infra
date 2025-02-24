@@ -58,21 +58,6 @@ variable "max_size" {
   type        = number
 }
 
-variable "max_unavailable" {
-  description = "The maximum number of unavailable nodes during a rolling update"
-  type        = number
-}
-
-##  variable "vpc_id" {
-##  description = "The ID of the VPC in which to create the EKS cluster"
-##  type        = string
-##}
-
-##  variable "private_subnet_ids" {
-##  description = "The IDs of the private subnets in which to create the EKS cluster"
-##  type        = list(string)
-##}
-
 # Define load balancer variables
 
 variable "lb_name" {
@@ -84,8 +69,3 @@ variable "target_group_name" {
   description = "The name of the target group"
   type        = string
 }
-
-##  variable "public_subnet_ids" {
-##  description = "The IDs of the public subnets in which to create the EKS cluster"
-##  type        = list(string)
-##  }
