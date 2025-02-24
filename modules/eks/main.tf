@@ -60,6 +60,10 @@ resource "aws_eks_node_group" "ilios_node_group" {
     max_unavailable = 1
   }
 
+  tags = {
+    "Name" = "ilios-worker-node"
+  }
+
   depends_on = [
     aws_iam_role.node_group_role,
     aws_iam_role_policy_attachment.worker_node_policy_attachment,
