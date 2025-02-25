@@ -29,3 +29,7 @@ output "cluster_id" {
 output "instance_type" {
   value = var.instance_type
 }
+
+output "cluster_ca_certificate" {
+  value = aws_eks_cluster.ilios_cluster.certificate_authority.0.data
+}
