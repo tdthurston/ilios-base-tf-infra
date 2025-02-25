@@ -24,3 +24,7 @@ output "listener_arn" {
   value = module.ilios_lb.listener_arn
 }
 
+output "lb_dns_name" {
+  value = module.ilios_lb.lb_dns_name
+}
+
