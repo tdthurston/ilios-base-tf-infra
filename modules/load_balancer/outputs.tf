@@ -17,3 +17,7 @@ output "target_group_arn" {
 output "listener_arn" {
   value = aws_lb_listener.ilios_alb_listener.arn
 }
+
+output "lb_dns_name" {
+  value = aws_lb.ilios_alb.dns_name
+}

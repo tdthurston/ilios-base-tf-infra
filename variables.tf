@@ -58,6 +58,11 @@ variable "max_size" {
   type        = number
 }
 
+variable "max_unavailable" {
+  description = "The maximum number of nodes that can be unavailable during a rolling update"
+  type        = number
+}
+
 # Define load balancer variables
 
 variable "lb_name" {
