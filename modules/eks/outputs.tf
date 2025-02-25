@@ -31,5 +31,5 @@ output "instance_type" {
 }
 
 output "cluster_ca_certificate" {
-  value = aws_eks_cluster.ilios_cluster.certificate_authority.0.data
+  value = aws_eks_cluster.ilios_cluster.certificate_authority.data
 }
