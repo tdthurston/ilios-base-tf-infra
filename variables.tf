@@ -74,3 +74,15 @@ variable "target_group_name" {
   description = "The name of the target group"
   type        = string
 }
+
+# Define OIDC variables
+
+variable "github_org" {
+  description = "The GitHub organization to use for OIDC authentication"
+  type        = string
+}
+
+variable "github_repo" {
+  description = "The GitHub repository to use for OIDC authentication"
+  type        = string
+}

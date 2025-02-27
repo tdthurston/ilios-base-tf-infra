@@ -57,7 +57,7 @@ resource "aws_eks_node_group" "ilios_node_group" {
   }
 
   update_config {
-    max_unavailable = 1
+    max_unavailable = var.max_unavailable
   }
 
   tags = {
