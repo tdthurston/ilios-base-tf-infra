@@ -75,10 +75,16 @@ variable "target_group_name" {
   type        = string
 }
 
+variable "instance_name" {
+  description = "The name of the load balancer instance"
+  type        = string
+
+}
+
 # Define OIDC variables
 
 variable "github_org" {
-  description = "The GitHub organization to use for OIDC authentication"
+  description = "The GitHub organization/username to use for OIDC authentication"
   type        = string
 }
 

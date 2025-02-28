@@ -14,7 +14,7 @@ resource "aws_lb" "ilios_alb" {
 }
 
 resource "aws_lb_target_group" "ilios_alb_tg" {
-  name     = "ilios-alb-tg"
+  name     = var.target_group_name
   port     = 80
   protocol = "HTTP"
   vpc_id   = var.vpc_id
@@ -57,7 +57,7 @@ resource "aws_instance" "ilios_alb_instance" {
   ami                    = data.aws_ami.latest_amazon_linux.id
 
   tags = {
-    Name = "ilios-alb-instance"
+    Name = var.alb_instance_name
   }
 }
 

@@ -27,3 +27,8 @@ variable "instance_type" {
   description = "The instance type of the load balancer"
   type        = string
 }
+
+variable "alb_instance_name" {
+  description = "The name of the load balancer instance"
+  type        = string
+}
