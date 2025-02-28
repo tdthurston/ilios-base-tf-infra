@@ -56,9 +56,6 @@ resource "aws_instance" "ilios_alb_instance" {
   vpc_security_group_ids = [aws_security_group.lb_sg.id]
   ami                    = data.aws_ami.latest_amazon_linux.id
 
-  tags = {
-    Name = var.instance_name
-  }
 }
 
 resource "aws_lb_target_group_attachment" "ilios_alb_tga" {
