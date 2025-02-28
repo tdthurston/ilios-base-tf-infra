@@ -57,7 +57,7 @@ resource "aws_instance" "ilios_alb_instance" {
   ami                    = data.aws_ami.latest_amazon_linux.id
 
   tags = {
-    Name = var.alb_instance_name
+    Name = var.instance_name
   }
 }
 
