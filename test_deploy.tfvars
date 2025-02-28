@@ -19,7 +19,7 @@ max_unavailable  = 1
 
 lb_name           = "test-lb"
 target_group_name = "test-target-group"
-instance_name = "test-instance"
+instance_name     = "test-instance"
 
 github_org  = "tdthurston"
 github_repo = "ilios-base-tf-infra"
