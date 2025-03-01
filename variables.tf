@@ -75,12 +75,6 @@ variable "target_group_name" {
   type        = string
 }
 
-variable "instance_name" {
-  description = "The name of the load balancer instance"
-  type        = string
-
-}
-
 # Define OIDC variables
 
 variable "github_org" {

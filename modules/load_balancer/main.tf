@@ -7,10 +7,6 @@ resource "aws_lb" "ilios_alb" {
 
 
   enable_deletion_protection = false
-
-  tags = {
-    Environment = "production"
-  }
 }
 
 resource "aws_lb_target_group" "ilios_alb_tg" {
