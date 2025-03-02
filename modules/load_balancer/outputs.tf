@@ -15,10 +15,10 @@ output "alb_dns_name" {
 
 output "listener_arn" {
   description = "ARN of the listener for the ALB"
-  value       = module.ilios_lb.listener_arn
+  value       = aws_lb_listener.ilios_alb_listener.arn
 }
 
 output "target_group_arn" {
   description = "ARN of the target group for the ALB"
-  value       = module.ilios_lb.target_group_arn
+  value       = aws_lb_target_group.ilios_alb_tg.arn
 }
