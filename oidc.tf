@@ -1,4 +1,4 @@
-module "oidc" {
+module "ilios_oidc" {
   source = "git::https://github.com/tdthurston/ilios-base-tf-infra.git//modules//oidc"
 
   github_org  = var.github_org
