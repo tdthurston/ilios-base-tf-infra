@@ -25,3 +25,8 @@ output "target_group_arn" {
   description = "ARN of the target group for the ALB"
   value       = module.ilios_lb.target_group_arn
 }
+
+output "lb_arn" {
+  description = "ARN of the ALB"
+  value       = module.ilios_lb.lb_arn
+}

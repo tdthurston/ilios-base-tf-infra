@@ -22,3 +22,8 @@ output "target_group_arn" {
   description = "ARN of the target group for the ALB"
   value       = aws_lb_target_group.ilios_alb_tg.arn
 }
+
+output "lb_arn" {
+  description = "ARN of the ALB"
+  value       = aws_lb.ilios_alb.arn
+}
