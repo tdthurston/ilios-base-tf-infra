@@ -8,6 +8,10 @@ module "ilios_vpc" {
 
 }
 
+output "aws_region" {
+  description = "The AWS region to create resources in"
+  value = var.aws_region
+}
 output "vpc_id" {
   description = "The ID of the VPC"
   value = module.ilios_vpc.vpc_id
