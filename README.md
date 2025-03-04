@@ -9,7 +9,7 @@ This guide will walk you through the steps to deploy the infrastructure. Please 
 
 ## Variables
 
-Below are the variables you need to define in your `variables.tf` file:
+Below are the variables you need to define in your `terraform.tfvars` file:
 
 ### AWS Region Variable
 

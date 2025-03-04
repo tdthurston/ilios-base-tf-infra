@@ -1,7 +1,7 @@
 module "ilios_eks_cluster" {
 
-  source = "git::https://github.com/tdthurston/ilios-base-tf-infra.git//modules//eks"
-
+  source = "../modules/eks_cluster"
+  
   cluster_name                 = var.cluster_name
   node_group_name              = var.node_group_name
   cluster_security_group_id    = module.ilios_eks_cluster.cluster_security_group_id
