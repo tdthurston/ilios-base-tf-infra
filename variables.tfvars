@@ -25,7 +25,6 @@ max_unavailable  = 1
 # Load Balancer
 lb_name           = "test-lb"
 target_group_name = "test-target-group"
-instance_name     = "test-instance"
 
 # OIDC
 github_org  = "tdthurston"

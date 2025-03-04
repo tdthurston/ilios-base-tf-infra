@@ -11,8 +11,22 @@ module "ilios_lb" {
 
 }
 
-output "lb_dns_name" {
+output "alb_dns_name" {
   description = "ALB DNS Name"
-  value       = module.ilios_lb.lb_dns_name
+  value       = module.ilios_lb.alb_dns_name
 }
 
+output "listener_arn" {
+  description = "ARN of the listener for the ALB"
+  value       = module.ilios_lb.listener_arn
+}
+
+output "target_group_arn" {
+  description = "ARN of the target group for the ALB"
+  value       = module.ilios_lb.target_group_arn
+}
+
+output "lb_arn" {
+  description = "ARN of the ALB"
+  value       = module.ilios_lb.lb_arn
+}

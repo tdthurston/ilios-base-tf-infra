@@ -9,5 +9,5 @@ module "oidc" {
 
 output "oidc_role_arn" {
   description = "ARN of the IAM role for GitHub OIDC authentication"
-  value       = module.oidc.oidc_role_arn
+  value       = module.ilios_oidc.oidc_role_arn
 }

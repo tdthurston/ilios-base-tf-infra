@@ -1,6 +1,6 @@
 # Specify AWS region you would like to create resources in
 
-variable "vpc_region" {
+variable "aws_region" {
   description = "The AWS region to create resources in"
   type        = string
 }
@@ -73,12 +73,6 @@ variable "lb_name" {
 variable "target_group_name" {
   description = "The name of the target group"
   type        = string
-}
-
-variable "instance_name" {
-  description = "The name of the load balancer instance"
-  type        = string
-
 }
 
 # Define OIDC variables
