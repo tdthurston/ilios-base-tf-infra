@@ -7,9 +7,3 @@ variable "github_repo" {
   description = "GitHub repository name"
   type        = string
 }
-
-variable "aws_region" {
-  description = "AWS region"
-  type        = string
-  
-}
