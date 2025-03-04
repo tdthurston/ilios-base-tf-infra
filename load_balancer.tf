@@ -13,7 +13,7 @@ module "ilios_lb" {
 
 output "alb_dns_name" {
   description = "ALB DNS Name"
-  value       = module.ilios_lb.lb_dns_name
+  value       = module.ilios_lb.alb_dns_name
 }
 
 output "listener_arn" {
