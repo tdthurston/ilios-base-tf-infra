@@ -47,22 +47,19 @@ resource "aws_iam_policy" "github_oidc_policy" {
       {
         Effect = "Allow"
         Action = [
-          # EKS permissions
           "eks:*",
-
-          # EC2 permissions for networking
           "ec2:*",
-
-          # VPC permissions
           "elasticloadbalancing:*",
-
-          # IAM permissions for role management
           "iam:CreateRole",
           "iam:DeleteRole",
           "iam:GetRole",
           "iam:PassRole",
           "iam:AttachRolePolicy",
-          "iam:DetachRolePolicy"
+          "iam:DetachRolePolicy",
+          "iam:CreateOpenIDConnectProvider",
+          "iam:CreatePolicy",
+          "iam:DeletePolicy",
+          "iam:GetPolicy",
 
 
         ]
