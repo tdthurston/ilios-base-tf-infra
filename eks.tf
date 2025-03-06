@@ -39,5 +39,5 @@ output "cluster_ca_certificate" {
 
 output "irsa_role_arn" {
   description = "ARN of the IRSA role"
-  value       = aws_iam_role.eks_irsa_role.arn
+  value       = module.ilios_eks_cluster.irsa_role_arn
 }

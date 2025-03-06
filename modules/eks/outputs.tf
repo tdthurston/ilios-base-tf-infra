@@ -42,3 +42,8 @@ output "cluster_ca_certificate" {
   value     = aws_eks_cluster.ilios_cluster.certificate_authority.0.data
   sensitive = true
 }
+
+output "irsa_role_arn" {
+  description = "ARN of the IRSA role"
+  value       = aws_iam_role.irsa_role.arn
+}
