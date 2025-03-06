@@ -27,3 +27,8 @@ output "lb_arn" {
   description = "ARN of the ALB"
   value       = aws_lb.ilios_alb.arn
 }
+
+output "irsa_role_arn" {
+  description = "ARN of the IRSA role"
+  value       = aws_iam_role.eks_irsa_role.arn
+}
