@@ -52,3 +52,9 @@ variable "private_subnet_ids" {
   description = "The IDs of the private subnets in which to create the EKS cluster"
   type        = list(string)
 }
+
+variable "aws_auth_roles" {
+  description = "List of role maps to add to the aws-auth configmap"
+  type        = list(any)
+  default     = []
+}

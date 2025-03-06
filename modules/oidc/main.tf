@@ -43,6 +43,11 @@ resource "aws_iam_policy_attachment" "github_oidc_policy_attach" {
   policy_arn = aws_iam_policy.github_oidc_policy.arn
 }
 
+resource "aws_iam_role_policy_attachment" "github_eks_admin" {
+  role       = aws_iam_role.github_oidc_role.name
+  policy_arn = "arn:aws:iam::aws:policy/AmazonEKSClusterPolicy"
+}
+
 resource "aws_iam_policy" "github_oidc_policy" {
   name        = "GitHubOIDCPolicy"
   description = "Policy for GitHub Actions OIDC authentication"

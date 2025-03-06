@@ -1,36 +1,36 @@
 output "cluster_name" {
   description = "EKS Cluster name"
-  value       = var.cluster_name
+  value       = module.eks.cluster_name
 }
 
 output "cluster_endpoint" {
   description = "EKS Cluster endpoint"
-  value       = aws_eks_cluster.ilios_cluster.endpoint
+  value       = module.eks.cluster_endpoint
 }
 
 output "cluster_security_group_id" {
   description = "EKS Cluster security group ID"
-  value       = aws_security_group.cluster_sg.id
+  value       = module.eks.cluster_security_group_id
 }
 
 output "node_group_security_group_id" {
   description = "EKS Node Group security group ID"
-  value       = aws_security_group.node_group_sg.id
+  value       = module.eks.node_security_group_id
 }
 
 output "node_group_role_arn" {
   description = "EKS Node Group role ARN"
-  value       = aws_iam_role.node_group_role.arn
+  value       = module.eks.eks_managed_node_groups["main"].iam_role_arn
 }
 
 output "cluster_role_arn" {
   description = "EKS Cluster role ARN"
-  value       = aws_iam_role.cluster_role.arn
+  value       = module.eks.cluster_iam_role_arn
 }
 
 output "cluster_id" {
   description = "The ID of the EKS cluster"
-  value       = aws_eks_cluster.ilios_cluster.id
+  value       = module.eks.cluster_id
 }
 
 output "instance_type" {
@@ -39,11 +39,12 @@ output "instance_type" {
 }
 
 output "cluster_ca_certificate" {
-  value     = aws_eks_cluster.ilios_cluster.certificate_authority.0.data
-  sensitive = true
+  description = "EKS cluster CA certificate"
+  value       = module.eks.cluster_certificate_authority_data
+  sensitive   = true
 }
 
 output "irsa_role_arn" {
   description = "ARN of the IRSA role"
-  value       = aws_iam_role.irsa_role.arn
+  value       = module.eks.oidc_provider_arn
 }
