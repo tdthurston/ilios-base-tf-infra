@@ -34,4 +34,5 @@ output "instance_type" {
 output "cluster_ca_certificate" {
   description = "The CA certificate of the EKS cluster"
   value       = module.ilios_eks_cluster.cluster_ca_certificate
+  sensitive = true
 }
