@@ -27,8 +27,8 @@ resource "aws_iam_role" "github_oidc_role" {
           },
           StringLike = {
             "token.actions.githubusercontent.com:sub" = [
-              "repo:${var.github_org}/ilios-base-tf-infra:*",
-              "repo:${var.github_org}/${var.github_repo}:*"
+              "repo:${var.github_org}/${var.github_repo}:*",
+              "repo:${var.github_org}/ilios-golang-api:*"
             ]
           }
         }
