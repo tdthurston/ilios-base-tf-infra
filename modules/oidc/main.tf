@@ -53,9 +53,12 @@ resource "aws_iam_policy" "github_oidc_policy" {
       {
         Effect = "Allow"
         Action = [
-          "eks:*",
-          "ec2:*",
-          "elasticloadbalancing:*",
+          "eks:DescribeCluster",
+          "eks:ListClusters",
+          "eks:DescribeNodegroup",
+          "eks:ListNodegroups",
+          "eks:ListUpdates",
+          "eks:AccessKubernetesApi",
           "iam:CreateRole",
           "iam:DeleteRole",
           "iam:GetRole",

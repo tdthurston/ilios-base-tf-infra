@@ -1,8 +1,6 @@
-# This file can be used to test the deployment of the terraform code using arbitrary values.
-# Run terraform apply -var-file="variables.tfvars" to deploy the infrastructure
-# In a real world scenario, the values in this file would be replaced with the actual values
-# for the deployment
-
+# This file contains arbitrary variables that can be used to test the Terraform configuration.
+# in actual production use, you will replace these values with your own. Typically, .tfvars files
+# should not be stored in the repository, but for the purposes of this example, they are included.
 
 # Region
 aws_region         = "us-east-1"
