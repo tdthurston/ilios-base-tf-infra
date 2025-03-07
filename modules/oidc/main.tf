@@ -74,6 +74,8 @@ resource "aws_iam_policy" "github_oidc_policy" {
           "iam:CreatePolicy",
           "iam:DeletePolicy",
           "iam:GetPolicy",
+          "iam:GetPolicyVersion",
+          "iam:ListPolicyVersions"
         ]
         Resource = "*"
       }
