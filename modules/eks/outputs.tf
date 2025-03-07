@@ -43,8 +43,3 @@ output "cluster_ca_certificate" {
   value       = module.eks.cluster_certificate_authority_data
   sensitive   = true
 }
-
-output "irsa_role_arn" {
-  description = "ARN of the IRSA role"
-  value       = module.eks.oidc_provider_arn
-}
