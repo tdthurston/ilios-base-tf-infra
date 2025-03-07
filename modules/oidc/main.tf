@@ -75,7 +75,12 @@ resource "aws_iam_policy" "github_oidc_policy" {
           "iam:DeletePolicy",
           "iam:GetPolicy",
           "iam:GetPolicyVersion",
-          "iam:ListPolicyVersions"
+          "iam:ListPolicyVersions",
+          "ec2:DescribeVpcs",
+          "ec2:DescribeInstances",
+          "ec2:DescribeSecurityGroups",
+          "ec2:DescribeSubnets",
+          "ec2:DescribeNetworkInterfaces"
         ]
         Resource = "*"
       }
