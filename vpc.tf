@@ -6,6 +6,7 @@ module "ilios_vpc" {
   vpc_name           = var.vpc_name
   subnet_cidr_blocks = var.subnet_cidr_blocks
   azs                = var.azs
+  tags               = var.tags
 
 }
 

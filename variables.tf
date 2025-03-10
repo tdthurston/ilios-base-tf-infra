@@ -86,3 +86,15 @@ variable "github_repo" {
   description = "The GitHub repository to use for OIDC authentication"
   type        = string
 }
+
+# Define tags
+
+variable "tags" {
+  description = "Common tags to apply to all resources"
+  type        = map(string)
+  default = {
+    Environment = "dev"
+    Project     = "ilios"
+    ManagedBy   = "terraform"
+  }
+}

@@ -7,10 +7,15 @@ resource "aws_iam_openid_connect_provider" "github" {
 
   client_id_list  = ["sts.amazonaws.com"]
   thumbprint_list = [data.tls_certificate.github.certificates[0].sha1_fingerprint]
+
+  tags = merge(var.tags, {
+    Name = "GitHubActionsOIDCProvider"
+  })
 }
 
 resource "aws_iam_role" "github_oidc_role" {
   name = "GitHubActionsOIDCRole"
+  tags = var.tags
 
   assume_role_policy = jsonencode({
     Version = "2012-10-17"
@@ -51,6 +56,7 @@ resource "aws_iam_role_policy_attachment" "github_eks_admin" {
 resource "aws_iam_policy" "github_oidc_policy" {
   name        = "GitHubOIDCPolicy"
   description = "Policy for GitHub Actions OIDC authentication"
+  tags        = var.tags
 
   policy = jsonencode({
     Version = "2012-10-17"

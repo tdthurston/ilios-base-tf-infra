@@ -8,22 +8,18 @@ module "eks" {
   vpc_id     = var.vpc_id
   subnet_ids = var.private_subnet_ids
   
-  # Enable aws-auth configmap management
   manage_aws_auth_configmap = true
   
-  # Add OIDC role if passed from parent module
   aws_auth_roles = var.aws_auth_roles
+
+  tags = var.tags
   
-  
-  # Security groups
   cluster_security_group_id = var.cluster_security_group_id != null ? var.cluster_security_group_id : null
   
-  # Add defaults for node groups to avoid null values
   eks_managed_node_group_defaults = {
     vpc_security_group_ids = []  # Empty list instead of null
   }
   
-  # Node groups configuration
   eks_managed_node_groups = {
     main = {
       name           = var.node_group_name
@@ -32,11 +28,10 @@ module "eks" {
       max_size       = var.max_size
       desired_size   = var.desired_capacity
       subnet_ids     = var.private_subnet_ids
+      tags           = var.tags
       
-      # Configure node group security group if specified - changed to empty list instead of null
       vpc_security_group_ids = var.node_group_security_group_id != null ? [var.node_group_security_group_id] : []
       
-      # Standard recommended policies
       iam_role_additional_policies = [
         "arn:aws:iam::aws:policy/AmazonEKSWorkerNodePolicy",
         "arn:aws:iam::aws:policy/AmazonEKS_CNI_Policy",
@@ -47,13 +42,11 @@ module "eks" {
         max_unavailable = var.max_unavailable
       }
       
-      tags = {
-        "Name" = "ilios-worker-node"
-      }
+      tags = var.tags
+
     }
   }
   
-  # Add your security group rules
   node_security_group_additional_rules = {
     ingress_ssh = {
       description      = "Allow SSH access"

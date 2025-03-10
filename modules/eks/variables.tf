@@ -58,3 +58,9 @@ variable "aws_auth_roles" {
   type        = list(any)
   default     = []
 }
+
+variable "tags" {
+  description = "Tags to apply to resources"
+  type        = map(string)
+  default     = {}
+}

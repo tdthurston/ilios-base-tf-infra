@@ -8,6 +8,7 @@ module "ilios_lb" {
   vpc_cidr_block    = module.ilios_vpc.vpc_cidr_block
   instance_type     = module.ilios_eks_cluster.instance_type
   public_subnet_ids = module.ilios_vpc.public_subnet_ids
+  tags              = var.tags
 
 }
 

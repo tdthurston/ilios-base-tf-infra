@@ -4,6 +4,7 @@ resource "aws_lb" "ilios_alb" {
   load_balancer_type = "application"
   security_groups    = [aws_security_group.lb_sg.id]
   subnets            = var.public_subnet_ids
+  tags               = var.tags
 
 
   enable_deletion_protection = false
@@ -25,9 +26,7 @@ resource "aws_lb_target_group" "ilios_alb_tg" {
     interval            = 10
   }
 
-  tags = {
-    Environment = "production"
-  }
+  tags = var.tags
 }
 
 data "aws_ami" "latest_amazon_linux" {
@@ -51,6 +50,7 @@ resource "aws_instance" "ilios_alb_instance" {
   subnet_id              = var.public_subnet_ids[0]
   vpc_security_group_ids = [aws_security_group.lb_sg.id]
   ami                    = data.aws_ami.latest_amazon_linux.id
+  tags                   = var.tags
 
 }
 
@@ -64,6 +64,7 @@ resource "aws_lb_listener" "ilios_alb_listener" {
   load_balancer_arn = aws_lb.ilios_alb.arn
   port              = 80
   protocol          = "HTTP"
+  tags              = var.tags
 
   default_action {
     type             = "forward"
@@ -75,6 +76,7 @@ resource "aws_security_group" "lb_sg" {
   name        = "ilios-lb-sg"
   description = "Allow HTTP inbound traffic"
   vpc_id      = var.vpc_id
+  tags        = var.tags
 }
 
 resource "aws_security_group_rule" "lb_sg_rule_ingress" {

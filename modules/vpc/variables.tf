@@ -17,3 +17,9 @@ variable "azs" {
   description = "List of desired availability zones for the subnet"
   type        = list(string)
 }
+
+variable "tags" {
+  description = "Tags to apply to resources"
+  type        = map(string)
+  default     = {}
+}

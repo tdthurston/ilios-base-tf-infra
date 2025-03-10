@@ -7,3 +7,8 @@ variable "github_repo" {
   description = "GitHub repository name"
   type        = string
 }
+
+variable "tags" {
+  description = "Tags to apply to resources"
+  type        = map(string)
+}

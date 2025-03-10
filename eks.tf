@@ -29,6 +29,7 @@ module "ilios_eks_cluster" {
   max_unavailable              = var.max_unavailable
   vpc_id                       = module.ilios_vpc.vpc_id
   private_subnet_ids           = module.ilios_vpc.private_subnet_ids
+  tags                         = var.tags
   aws_auth_roles = [
     {
       rolearn  = module.ilios_oidc.oidc_role_arn
