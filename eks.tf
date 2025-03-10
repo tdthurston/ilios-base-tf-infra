@@ -17,7 +17,7 @@ provider "kubernetes" {
 
 module "ilios_eks_cluster" {
   source = "./modules/eks"
-  
+
   cluster_name                 = var.cluster_name
   node_group_name              = var.node_group_name
   cluster_security_group_id    = null

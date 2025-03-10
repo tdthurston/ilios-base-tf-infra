@@ -54,7 +54,7 @@ resource "aws_internet_gateway" "ilios_igw" {
 
 resource "aws_eip" "ilios_eip" {
   domain = "vpc"
-  tags = var.tags
+  tags   = var.tags
 }
 
 resource "aws_nat_gateway" "ilios_nat_gw" {
