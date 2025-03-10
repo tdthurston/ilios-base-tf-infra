@@ -87,6 +87,19 @@ resource "aws_iam_policy" "github_oidc_policy" {
           "ec2:DescribeNetworkInterfaces"
         ]
         Resource = "*"
+      },
+      {
+        Effect = "Allow",
+        Action = [
+          "s3:ListBucket",
+          "s3:GetObject",
+          "s3:PutObject",
+          "s3:DeleteObject"
+        ],
+        Resource = [
+          "arn:aws:s3:::ilios-tf-backend",
+          "arn:aws:s3:::ilios-tf-backend/ilios-golang-api/*"
+        ]
       }
     ]
   })
