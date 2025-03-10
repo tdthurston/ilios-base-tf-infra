@@ -27,3 +27,11 @@ target_group_name = "test-target-group"
 # OIDC
 github_org  = "tdthurston"
 github_repo = "ilios-base-tf-infra"
+
+# OPTIONAL: custom tagging
+
+# tags = {
+#   Environment = "dev"
+#   Project     = "ilios"
+#   ManagedBy   = "Terraform"
+# }
