@@ -37,6 +37,11 @@ Below are the variables you need to define in your `terraform.tfvars` file:
 - `lb_name`: The name of the load balancer.
 - `target_group_name`: The name of the target group.
 
+### GitHub Variables
+
+- `github_org`: The GitHub organization name where your repository is located.
+- `github_repo`: The name of the GitHub repository containing your infrastructure code.
+
 ## Deployment Steps
 
 1. Clone the repository to your local machine.
