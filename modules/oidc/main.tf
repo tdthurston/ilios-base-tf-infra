@@ -90,7 +90,14 @@ resource "aws_iam_policy" "github_oidc_policy" {
           "ec2:DescribeInstances",
           "ec2:DescribeSecurityGroups",
           "ec2:DescribeSubnets",
-          "ec2:DescribeNetworkInterfaces"
+          "ec2:DescribeNetworkInterfaces",
+          "ec2:DescribeImages",
+          "ec2:DescribeVpcAttribute",
+          "ec2:DescribeAddressesAttribute",
+          "iam:GetOpenIDConnectProvider",
+          "iam:GetRolePolicy",
+          "logs:DescribeLogGroups",
+          "logs:DeleteLogGroup"
         ]
         Resource = "*"
       },
