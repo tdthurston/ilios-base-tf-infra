@@ -104,7 +104,8 @@ resource "aws_iam_policy" "github_oidc_policy" {
         ],
         Resource = [
           "arn:aws:s3:::ilios-tf-backend",
-          "arn:aws:s3:::ilios-tf-backend/ilios-golang-api/*"
+          "arn:aws:s3:::ilios-tf-backend/ilios-golang-api/*",
+          "arn:aws:s3:::ilios-tf-backend/base-infrastructure/*"
         ]
       }
     ]
