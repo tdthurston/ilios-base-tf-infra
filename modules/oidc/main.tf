@@ -64,33 +64,34 @@ resource "aws_iam_policy" "github_oidc_policy" {
       {
         Effect = "Allow"
         Action = [
-
-          "ec2:Describe*",  
-          "eks:*",
-          "iam:ListEntitiesForPolicy",
-          "iam:GetOpenIDConnectProvider",
-          "iam:CreateOpenIDConnectProvider",
-          "iam:DeleteOpenIDConnectProvider",
-          "iam:GetRole",
+          "eks:DescribeCluster",
+          "eks:ListClusters",
+          "eks:DescribeNodegroup",
+          "eks:ListNodegroups",
+          "eks:ListUpdates",
+          "eks:AccessKubernetesApi",
           "iam:CreateRole",
           "iam:DeleteRole",
+          "iam:GetRole",
+          "iam:PassRole",
           "iam:AttachRolePolicy",
           "iam:DetachRolePolicy",
-          "iam:PutRolePolicy",
-          "iam:GetRolePolicy",
-          "iam:DeleteRolePolicy",
-          "iam:PassRole",
-          "iam:TagRole",
-          "iam:ListRolePolicies",
-          "iam:ListAttachedRolePolicies",
-          "iam:GetPolicy",
+          "iam:CreateOpenIDConnectProvider",
           "iam:CreatePolicy",
           "iam:DeletePolicy",
+          "iam:GetPolicy",
           "iam:GetPolicyVersion",
           "iam:ListPolicyVersions",
-          "elasticloadbalancing:*",
-          "logs:*"
-          
+          "iam:ListRolePolicies",
+          "iam:PutRolePolicy",
+          "iam:TagRole",
+          "iam:ListAttachedRolePolicies",
+          "iam:UpdateAssumeRolePolicy",
+          "ec2:DescribeVpcs",
+          "ec2:DescribeInstances",
+          "ec2:DescribeSecurityGroups",
+          "ec2:DescribeSubnets",
+          "ec2:DescribeNetworkInterfaces"
         ]
         Resource = "*"
       },
@@ -104,8 +105,7 @@ resource "aws_iam_policy" "github_oidc_policy" {
         ],
         Resource = [
           "arn:aws:s3:::ilios-tf-backend",
-          "arn:aws:s3:::ilios-tf-backend/ilios-golang-api/*",
-          "arn:aws:s3:::ilios-tf-backend/base-infrastructure/*"
+          "arn:aws:s3:::ilios-tf-backend/ilios-golang-api/*"
         ]
       }
     ]
