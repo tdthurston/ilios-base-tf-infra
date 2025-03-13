@@ -50,6 +50,8 @@ Below are the variables you need to define in your `terraform.tfvars` file:
     ```sh
     terraform init
     ```
+NOTE: included with this repository is a `terraform.tfvars` file with arbitrary values for easy testing. Make sure to change these to your desired values. In a production environment, this file should not be pushed to a public repo (add to `.gitignore` file) as they can contain sensitive values.
+    
 4. Create a `terraform.tfvars` file and input your variable values:
     ```hcl
     aws_region = "us-east-1"
@@ -66,6 +68,8 @@ Below are the variables you need to define in your `terraform.tfvars` file:
     max_unavailable = 1
     lb_name = "my-load-balancer"
     target_group_name = "my-target-group"
+    github_org = tdthurston
+    github_repo = ilios-base-tf-infra
     ```
 5. Apply the Terraform configuration:
     ```sh
@@ -73,9 +77,10 @@ Below are the variables you need to define in your `terraform.tfvars` file:
     ```
 6. Confirm the apply step by typing `yes` when prompted.
 
-Your infrastructure should now be deployed. If you encounter any issues, refer to the Terraform documentation or seek help from your cloud provider's support.
+Your infrastructure should now be deployed (this can take up to 30 minutes or longer). If you encounter any issues, refer to the Terraform documentation or seek help from your cloud provider's support.
 
 ## Additional Information
 
 For more details on each variable and their usage, please refer to the `variables.tf` file and the official Terraform documentation.
+Note that this repository includes a terraform.tfvars file with arbitrary values for easy testing. Make sure to change these to your desired values.
 
