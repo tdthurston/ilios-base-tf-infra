@@ -107,17 +107,13 @@ resource "aws_route_table" "ilios_private_rt" {
 }
 
 resource "aws_route" "ilios_private_route" {
-
   route_table_id         = aws_route_table.ilios_private_rt.id
   destination_cidr_block = "0.0.0.0/0"
   nat_gateway_id         = aws_nat_gateway.ilios_nat_gw.id
-
-
 }
 
 resource "aws_route_table_association" "ilios_private_sa" {
   count          = length(var.azs)
   subnet_id      = aws_subnet.ilios_private[count.index].id
   route_table_id = aws_route_table.ilios_private_rt.id
-
 }
